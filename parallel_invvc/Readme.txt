@@ -1,0 +1,1 @@
+Please use Google chrome to open index.html if other browser doesn't work.

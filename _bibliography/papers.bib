@@ -1,84 +1,254 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
-
-@book{einstein1956investigations,
+@article{CAI2024integrating,
   bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+  title = {Integrating Frame-Level Boundary Detection and Deepfake Detection for Locating Manipulated Regions in Partially Spoofed Audio Forgery Attacks},
+  journal = {Computer Speech & Language},
+  volume = {85},
+  pages = {101597},
+  year = {2024},
+  issn = {0885-2308},
+  doi = {https://doi.org/10.1016/j.csl.2023.101597},
+  html = {https://www.sciencedirect.com/science/article/pii/S088523082300116X},
+  author = {Zexin Cai and Ming Li},
+  selected={true},
+  preview={csl2024.png},
+  abstract = {Partially fake audio, a variant of deep fake that involves manipulating audio utterances through the incorporation of fake or externally-sourced bona fide audio clips, constitutes a growing threat as an audio forgery attack impacting both human and artificial intelligence applications. Researchers have recently developed valuable databases to aid in the development of effective countermeasures against such attacks. While existing countermeasures mainly focus on identifying partially fake audio at the level of entire utterances or segments, this paper introduces a paradigm shift by proposing frame-level systems. These systems are designed to detect manipulated utterances and pinpoint the specific regions within partially fake audio where the manipulation occurs. Our approach leverages acoustic features extracted from large-scale self-supervised pre-training models, delivering promising results evaluated on diverse, publicly accessible databases. Additionally, we study the integration of boundary and deepfake detection systems, exploring their potential synergies and shortcomings. Importantly, our techniques have yielded impressive results. We have achieved state-of-the-art performance on the test dataset of the Track 2 of ADD 2022 challenge with an equal error rate of 4.4%. Furthermore, our methods exhibit remarkable performance in locating manipulated regions in Track 2 of the ADD 2023 challenge, resulting in a final ADD score of 0.6713 and securing the top position.}
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
+@INPROCEEDINGS{CAI2023waveform,
   bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
-}
+  author={Cai, Zexin and Wang, Weiqing and Li, Ming},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={Waveform Boundary Detection for Partially Spoofed Audio}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-5},
+  selected={true},
+  preview={partialfake.png},
+  html = {https://ieeexplore.ieee.org/document/10094774},
+  doi={10.1109/ICASSP49357.2023.10094774},
+  code={https://github.com/caizexin/speechbrain_PartialFake},
+  abstract = {The present paper proposes a waveform boundary detection system for audio spoofing attacks containing partially manipulated segments. Partially spoofed/fake audio, where part of the utterance is replaced, either with synthetic or natural audio clips, has recently been reported as one scenario of audio deepfakes. As deepfakes can be a threat to social security, the detection of such spoofing audio is essential. Accordingly, we propose to address the problem with a deep learning-based frame-level detection system that can detect partially spoofed audio and locate the manipulated pieces. Our proposed method is trained and evaluated on data provided by the ADD2022 Challenge. We evaluate our detection model concerning various acoustic features and network configurations. As a result, our detection system achieves an equal error rate (EER) of 6.58% on the ADD2022 challenge test set, which is the best performance in partially spoofed audio detection systems that can locate manipulated clips.}}
 
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein, A. and Podolsky, B. and Rosen, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  selected={true}
-}
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
-}
-
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
-}
-
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
-}
-
-@book{przibram1967letters,
+@INPROCEEDINGS{CAI2024invertible,
   bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif}
+  author={Cai, Zexin and Li, Ming},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={INVERTIBLE VOICE CONVERSION WITH PARALLEL DATA}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={},
+  selected={true},
+  preview={invvc.png},
+  website={https://caizexin.github.io/parallel_invvc/index.html},
+  abstract = {This paper introduces an innovative deep learning framework for parallel voice conversion to mitigate inherent risks associated with such systems. Our approach focuses on developing an invertible model capable of countering potential spoofing threats. Specifically, we present a conversion model that allows for the retrieval of source voices, thereby facilitating the identification of the source speaker. This framework is constructed using a series of invertible modules composed of affine coupling layers to ensure the reversibility of the conversion process. We conduct comprehensive training and evaluation of the proposed framework using parallel training data. Our experimental results reveal that this approach achieves comparable performance to non-invertible systems in voice conversion tasks. Notably, the converted outputs can be seamlessly reverted to the original source inputs using the same parameters employed during the forwarding process. This advancement holds considerable promise for elevating the security and reliability of voice conversion.}}
+
+
+@article{CAI2023cross,
+  bibtex_show={true},
+  title = {Cross-Lingual Multi-Speaker Speech Synthesis with Limited Bilingual Training Data},
+  journal = {Computer Speech & Language},
+  volume = {77},
+  pages = {101427},
+  year = {2023},
+  issn = {0885-2308},
+  doi = {https://doi.org/10.1016/j.csl.2022.101427},
+  html = {https://www.sciencedirect.com/science/article/pii/S0885230822000584},
+  author = {Zexin Cai and Yaogen Yang and Ming Li},
+  selected={true},
+  preview={clsyn.png},
+  website={https://caizexin.github.io/mlms-syn-samples/index.html},
+  abstract = {Modeling voices for multiple speakers and multiple languages with one speech synthesis system has been a challenge for a long time, especially in low-resource cases. This paper presents two approaches to achieve cross-lingual multi-speaker text-to-speech (TTS) and code-switching synthesis under two training scenarios: (1) cross-lingual synthesis with sufficient data, (2) cross-lingual synthesis with limited data per speaker. Accordingly, a novel TTS synthesis model and a non-autoregressive multi-speaker voice conversion model are proposed. The TTS model designed for sufficient-data cases has a Tacotron-based structure that uses shared phonemic representations associated with numeric language ID codes. As for the data-limited scenario, we adopt a framework cascading several speech modules to achieve our goal. In particular, we proposed a non-autoregressive many-to-many voice conversion module to address multi-speaker synthesis for data-insufficient cases. Experimental results on speaker similarity show that our proposed voice conversion module can maintain the voice characteristics well in data-limited cases. Both approaches use limited bilingual data and demonstrate impressive performance in cross-lingual synthesis, which can deliver fluent foreign speech and even code-switching speech for monolingual speakers.}
 }
+
+@article{YANG2023Electrolaryngeal,
+  bibtex_show={true},
+  title = {Electrolaryngeal Speech Enhancement Based on A Two Stage Framework with Bottleneck Feature Refinement and Voice Conversion},
+  journal = {Biomedical Signal Processing and Control},
+  volume = {80},
+  pages = {104279},
+  year = {2023},
+  issn = {1746-8094},
+  preview={elec.png},
+  website={https://haydencaffrey.github.io/el/index.html},
+  doi = {https://doi.org/10.1016/j.bspc.2022.104279},
+  html = {https://www.sciencedirect.com/science/article/pii/S1746809422007339},
+  author = {Yaogen Yang and Haozhe Zhang and Zexin Cai and Yao Shi and Ming Li and Dong Zhang and Xiaojun Ding and Jianhua Deng and Jie Wang},
+  abstract = {An electrolarynx (EL) is a medical device that generates speech for people who lost their biological larynx. However, EL speech signals are unnatural and unintelligible due to the monotonous pitch and the mechanical excitation of the EL device. This paper proposes an end-to-end voice conversion method to enhance EL speech. We adopt a speaker-independent automatic speech recognition model to extract bottleneck features as the intermediate phonetic features for enhancement. Our system includes two stages: the bottleneck feature vectors of the EL speech are mapped by a parallel non-autoregressive model to the corresponding feature vectors of the normal speech in stage one. Then another voice conversion model maps normal speech’s bottleneck feature vectors directly to normal speech’s Mel-spectrogram in stage two, followed by a MelGAN-based vocoder to convert the Mel-spectrogram into waveform. In addition, we incorporate data augmentation and transfer learning to improve conversion performance. Experimental results show that the proposed method outperforms our baseline methods and performs well in terms of naturalness and intelligibility. The audio samples are available online.}
+}
+
+@INPROCEEDINGS{cai2023identifying,
+  bibtex_show={true}, 
+  author={Cai, Danwei and Cai, Zexin and Li, Ming},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={Identifying Source Speakers for Voice Conversion Based Spoofing Attacks on Speaker Verification Systems}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={},
+  doi={10.1109/ICASSP49357.2023.10096733},
+  preview={srctrack.png},
+  html={https://ieeexplore.ieee.org/abstract/document/10096733},
+  abstract={An automatic speaker verification system aims to verify the speaker identity of a speech signal. However, a voice conversion system could manipulate a person’s speech signal to make it sound like another speaker’s voice and deceive the speaker verification system. Most countermeasures for voice conversion-based spoofing attacks are designed to discriminate bona fide speech from spoofed speech for speaker verification systems. In this paper, we investigate the problem of source speaker identification – inferring the identity of the source speaker given the voice converted speech. To perform source speaker identification, we simply add voice-converted speech data with the label of source speaker identity to the genuine speech dataset during speaker embedding network training. Experimental results show the feasibility of source speaker identification when training and testing with converted speeches from the same voice conversion model(s). In addition, our results demonstrate that having more converted utterances from various voice conversion model for training helps improve the source speaker identification performance on converted utterances from unseen voice conversion models.}}
+
+@INPROCEEDINGS{zhang2022sigvc,
+  bibtex_show={true},
+  author={Zhang, Haozhe and Cai, Zexin and Qin, Xiaoyi and Li, Ming},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing}, 
+  title={SIG-VC: A Speaker Information Guided Zero-Shot Voice Conversion System for Both Human Beings and Machines}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={6567-6571},
+  preview={sigvc.png},
+  html={https://ieeexplore.ieee.org/abstract/document/9746048},
+  website={https://haydencaffrey.github.io/sigvc/index.html},
+  abstract={Nowadays, as more and more systems achieve good performance in traditional voice conversion (VC) tasks, people’s attention gradually turns to VC tasks under extreme conditions. In this paper, we propose a novel method for zero-shot voice conversion. We aim to obtain intermediate representations for speaker-content disentanglement of speech to better remove speaker information and get pure content information. Accordingly, our proposed framework contains a module that removes the speaker information from the acoustic feature of the source speaker. Moreover, speaker information control is added to our system to maintain the voice cloning performance. The proposed system is evaluated by subjective and objective metrics. Results show that our proposed system significantly reduces the trade-off problem in zero-shot voice conversion, while it also manages to have high spoofing power to the speaker verification system.},
+  doi={10.1109/ICASSP43922.2022.9746048}}
+
+
+@inproceedings{cai2020from,
+  bibtex_show={true},
+  author={Zexin Cai and Chuxiong Zhang and Ming Li},
+  title={{From Speaker Verification to Multispeaker Speech Synthesis, Deep Transfer with Feedback Constraint}},
+  year=2020,
+  booktitle={Conference of the International Speech Communication Association (INTERSPEECH)},
+  pages={3974--3978},
+  doi={10.21437/Interspeech.2020-1032},
+  selected={true},
+  preview={fcsyn.png},
+  html={https://www.isca-speech.org/archive/pdfs/interspeech_2020/cai20c_interspeech.pdf},
+  website={https://caizexin.github.io/mlspk-syn-samples/index.html},
+  code={https://github.com/caizexin/tf_multispeakerTTS_fc},
+  abstract={High-fidelity speech can be synthesized by end-to-end text-to-speech models in recent years. However, accessing and controlling speech attributes such as speaker identity, prosody, and emotion in a text-to-speech system remains a challenge. This paper presents a system involving feedback constraints for multispeaker speech synthesis. We manage to enhance the knowledge transfer from the speaker verification to the speech synthesis by engaging the speaker verification network. The constraint is taken by an added loss related to the speaker identity, which is centralized to improve the speaker similarity between the synthesized speech and its natural reference audio. The model is trained and evaluated on publicly available datasets. Experimental results, including visualization on speaker embedding space, show significant improvement in terms of speaker identity cloning in the spectrogram level. In addition, synthesized samples are available online for listening.}
+}
+
+@inproceedings{cai2019polyphone,
+  bibtex_show={true},
+  author={Zexin Cai and Chuxiong Zhang and Ming Li},
+  title={{Polyphone Disambiguation for Mandarin Chinese Using Conditional Neural Network with Multi-level Embedding Features}},
+  year=2019,
+  booktitle={Conference of the International Speech Communication Association (INTERSPEECH)},
+  pages={2110--2114},
+  doi={10.21437/Interspeech.2019-1235},
+  selected={true},
+  preview={polyphone.png},
+  html={https://www.isca-speech.org/archive/pdfs/interspeech_2019/cai19b_interspeech.pdf},
+  abstract={This paper describes a conditional neural network architecture for Mandarin Chinese polyphone disambiguation. The system is composed of a bidirectional recurrent neural network component acting as a sentence encoder to accumulate the context correlations, followed by a prediction network that maps the polyphonic character embeddings along with the conditions to corresponding pronunciations. We obtain the word-level condition from a pre-trained word-to-vector lookup table. One goal of polyphone disambiguation is to address the homograph problem existing in the front-end processing of Mandarin Chinese text-to-speech system. Our system achieves an accuracy of 94.69% on a publicly available polyphonic character dataset. To further validate our choices on the conditional feature, we investigate polyphone disambiguation systems with multi-level conditions respectively. The experimental results show that both the sentence-level and the word-level conditional embedding features are able to attain good performance for Mandarin Chinese polyphone disambiguation.}
+}
+
+
+@INPROCEEDINGS{cai2019f0contour,
+  bibtex_show={true},
+  author={Cai, Zexin and Xu, Zhicheng and Li, Ming},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={F0 Contour Estimation Using Phonetic Feature in Electrolaryngeal Speech Enhancement}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={6490-6494},
+  doi={10.1109/ICASSP.2019.8683435},
+  selected={true},
+  preview={f0gen.png},
+  html={https://ieeexplore.ieee.org/abstract/document/8683435},
+  abstract={Pitch plays a significant role in understanding a tone based language like Mandarin. In this paper, we present a new method that estimates F0 contour for electrolaryngeal (EL) speech enhancement in Mandarin. Our system explores the usage of phonetic feature to improve the quality of EL speech. First, we train an acoustic model for EL speech and generate the phoneme posterior probabilities feature sequence for each input EL speech utterance. Then we employ the phonetic feature for F0 contour generation rather than the acoustic feature. The experimental results indicate that the EL speech is significantly enhanced under the adoption of the phonetic feature. Experimental results demonstrate that the proposed method achieves notable improvement regarding the intelligibility and the similarity with normal speech.}
+}
+
+@INPROCEEDINGS{cai2018ema,
+  bibtex_show={true},
+  author={Cai, Zexin and Qin, Xiaoyi and Cai, Danwei and Li, Ming and Liu, Xinzhong and Zhong, Haibin},
+  booktitle={International Symposium on Chinese Spoken Language Processing (ISCSLP)}, 
+  title={The DKU-JNU-EMA Electromagnetic Articulography Database on Mandarin and Chinese Dialects with Tandem Feature Based Acoustic-to-Articulatory Inversion}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={235-239},
+  doi={10.1109/ISCSLP.2018.8706629},
+  preview={ema.png},
+  html={https://ieeexplore.ieee.org/abstract/document/8706629},
+  website={https://catalog.ldc.upenn.edu/LDC2019S14},
+  abstract={This paper presents the acquisition of the Duke Kunshan University Jinan University Electromagnetic Articulography (DKU-JNU-EMA) database in terms of aligned acoustics and articulatory data on Mandarin and Chinese dialects. This database currently includes data from multiple individuals in Mandarin and three Chinese dialects, namely Cantonese, Hakka, Teochew. There are 2–7 native speakers for each language or dialect. Acoustic data is obtained by one headmounted close talk microphone while articulatory data is obtained by the NDI electromagnetic articulography wave research system. The DKU-JNU-EMA database is now in preparation for public release to help advance research in areas of acoustic-to-articulatory inversion, speech production, dialect recognition, and experimental phonetics. Along with the database, we propose an acoustic-to-articulatory inversion baseline using deep neural networks. Moreover, we show that by concatenating the dimension reduced phoneme posterior probability feature with MFCC features at the feature level as tandem feature, the inversion system performance is enhanced.}
+  }
+
+@INPROCEEDINGS{cai2018insights,
+  bibtex_show={true},
+  author={Cai, Weicheng and Cai, Zexin and Liu, Wenbo and Wang, Xiaoqi and Li, Ming},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={Insights in-to-End Learning Scheme for Language Identification}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={5209-5213},
+  doi={10.1109/ICASSP.2018.8462026},
+  preview={e2elid.png},
+  html={https://ieeexplore.ieee.org/abstract/document/8462026},
+  abstract={A novel interpretable end-to-end learning scheme for language identification is proposed. It is in line with the classical GMM i-vector methods both theoretically and practically. In the end-to-end pipeline, a general encoding layer is employed on top of the frontend CNN, so that it can encode the variable-length input sequence into an utterance level vector automatically. After comparing with the state-of-the-art GMM i-vector methods, we give insights into CNN, and reveal its role and effect in the whole pipeline. We further introduce a general encoding layer, illustrating the reason why they might be appropriate for language identification. We elaborate on several typical encoding layers, including a temporal average pooling layer, a recurrent encoding layer and a novel learnable dictionary encoding layer. We conducted experiment on NIST LRE07 closed-set task, and the results show that our proposed end-to-end systems achieve state-of-the-art performance.}
+  }
+
+@INPROCEEDINGS{cai2018novel,
+  bibtex_show={true},
+  author={Cai, Weicheng and Cai, Zexin and Zhang, Xiang and Wang, Xiaoqi and Li, Ming},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={A Novel Learnable Dictionary Encoding Layer for End-to-End Language Identification}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={5189-5193},
+  doi={10.1109/ICASSP.2018.8462025},
+  preview={insightlid.png},
+  html={https://ieeexplore.ieee.org/abstract/document/8462025},
+  abstract={A novel learnable dictionary encoding layer is proposed in this paper for end-to-end language identification. It is inline with the conventional GMM i-vector approach both theoretically and practically. We imitate the mechanism of traditional GMM training and Supervector encoding procedure on the top of CNN. The proposed layer can accumulate high-order statistics from variable-length input sequence and generate an utterance level fixed-dimensional vector representation. Unlike the conventional methods, our new approach provides an end-to-end learning framework, where the inherent dictionary are learned directly from the loss function. The dictionaries and the encoding representation for the classifier are learned jointly. The representation is orderless and therefore appropriate for language identification. We conducted a preliminary experiment on NIST LRE07 closed-set task, and the results reveal that our proposed dictionary encoding layer achieves significant error reduction comparing with the simple average pooling.}}
+
+
+@INPROCEEDINGS{wu2018unsupervised,
+  bibtex_show={true},
+  author={Wu, Haiwei and Li, Ming and Cai, Zexin and Zhong, Haibin},
+  booktitle={International Symposium on Chinese Spoken Language Processing (ISCSLP)}, 
+  title={Unsupervised Query by Example Spoken Term Detection Using Features Concatenated with Self-Organizing Map Distances}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={1-5},
+  doi={10.1109/ISCSLP.2018.8706580},
+  preview={kws.png},
+  html={https://ieeexplore.ieee.org/abstract/document/8706580},
+  abstract={In the task of the unsupervised query by example spoken term detection (QbE-STD), we concatenate the features extracted by a Self-Organizing Map (SOM) and features learned by an unsupervised GMM based model at the feature level to enhance the performance. More specifically, The SOM features are represented by the distances between the current feature vector and the weight vectors of SOM neurons learned in an unsupervised manner. After fetching these features, we apply sub-sequence Dynamic Time Warping (S-DTW) to detect the occurrences of keywords in the test data. We evaluate the performance of these features on the TIMIT English database. After concatenating the SOM features and the GMM based features together, we achieve an improvement of 7.77% and 7.74% on Mean Average Precision (MAP) and P@10 on average.}
+  }
+
+@INPROCEEDINGS{chen2018lid,
+  bibtex_show={true},
+  author={Chen, Jinkun and Cai, Weicheng and Cai, Danwei and Cai, Zexin and Zhong, Haibin and Li, Ming},
+  booktitle={International Symposium on Chinese Spoken Language Processing (ISCSLP)}, 
+  title={End-to-end Language Identification Using NetFV and NetVLAD}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={319-323},
+  doi={10.1109/ISCSLP.2018.8706687},
+  preview={lid.png},
+  html={https://ieeexplore.ieee.org/abstract/document/8706687},
+  abstract={In this paper, we apply the NetFV and NetVLAD layers for the end-to-end language identification task. NetFV and NetVLAD layers are the differentiable implementations of the standard Fisher Vector and Vector of Locally Aggregated Descriptors (VLAD) methods, respectively. Both of them can encode a sequence of feature vectors into a fixed dimensional vector which is very important to process those variable-length utterances. We first present the relevances and differences between the classical i-vector and the aforementioned encoding schemes. Then, we construct a flexible end-to-end framework including a convolutional neural network (CNN) architecture and an encoding layer (NetFV or NetVLAD) for the language identification task. Experimental results on the NIST LRE 2007 close-set task show that the proposed system achieves significant EER reductions against the conventional i-vector baseline and the CNN temporal average pooling system, respectively.}
+  }
+
+
+@INPROCEEDINGS{cai2018deepspk,
+  bibtex_show={true},
+  author={Cai, Danwei and Cai, Zexin and Li, Ming},
+  booktitle={Asia-Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC)}, 
+  title={Deep Speaker Embeddings with Convolutional Neural Network on Supervector for Text-Independent Speaker Recognition}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={1478-1482},
+  doi={10.23919/APSIPA.2018.8659595},
+  preview={deepspk.png},
+  html={https://ieeexplore.ieee.org/abstract/document/8659595},
+  abstract={Lexical content variability in different utterances is the key challenge for text-independent speaker verification. In this paper, we investigate using supervector which has ability to reduce the impact of lexical content mismatch among different utterances for supervised speaker embedding learning. A DNN acoustic model is used to align a feature sequence to a set of senones and generate centered and normalized first order statistics supervector. Statistics vectors from similar senones are placed together and reshaped to an image to maintain the local continuity and correlation. The supervector image is then fed into residual convolutional neural network. The deep speaker embedding features are the outputs of the last hidden layer of the network and we employ a PLDA back-end for the subsequent modeling. Experimental results show that the proposed method outperforms the conventional GMM-UBM i-vector system and is complementary to the DNN-UBM i-vector system. The score level fusion system achieves 1.26% ERR and 0.260 DCF10 cost on the NIST SRE 10 extended core condition 5 task.}
+  }
+
+

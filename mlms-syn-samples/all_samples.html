@@ -1,0 +1,732 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cross-lingual Multispeaker Text-to-Speech under Limited-Data Scenario</title>
+  </head>
+  <body>
+    <div>
+      <article>
+      <header> <h2>Cross-lingual Multi-speaker Speech Synthesis with Limited Bilingual Training Data</h2> </header>
+    </article>
+    <!-- <p><b>Paper:</b> <a href="https://arxiv.org/abs/2005.10441">Preprint</a></p> -->
+    <p><b>Authors</b>: Zexin Cai, Yaogen Yang, Ming Li</p>
+    <div><b>Abstract:</b>  Modeling voices for multiple speakers and multiple languages with one speech synthesis system has been a challenge for a long time, especially in low-resource cases. This paper presents two approaches to achieve cross-lingual multi-speaker text-to-speech (TTS) and code-switching synthesis under two scenarios: 1) cross-lingual synthesis with sufficient data, 2) cross-lingual synthesis with limited data per speaker. Accordingly, a novel TTS synthesis model and a non-autoregressive multi-speaker voice conversion model are proposed. The TTS model designed for sufficient-data cases uses shared phonemic representations associated with language tokens. As for the data-limited scenario, we adopt a framework cascading several speech modules to achieve our goal. In particular, we proposed a parallel non-autoregressive voice conversion module to address multi-speaker synthesis for data-insufficient cases. Both approaches use limited bilingual data and demonstrate impressive performance in cross-lingual synthesis, where we can generate fluent foreign speech, even code-switching speech, for monolingual speakers.  Moreover, experimental results show that our proposed voice conversion module can well maintain the voice characteristics in data-limited cases.  </div>
+
+    <table>
+      <thead>
+      <tr><td colspan="9"><span><b>Orignial Voices</b></td></span></tr> 
+
+      <tr>
+        <th> DB1 </th> <th> LJS </th> <th> DB4-Mandarin </th>  <th> DB4-English </th> <th> DB4-Code-switching </th> <th> VCTK-P232 </th> <th> VCTK-P268 </th> <th> SSB0011 </th> <th> SSB0407 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td><audio controls=""><source src="ori_voices/db1_008229.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="ori_voices/ljs_LJ029-0189.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="ori_voices/db4_CN007116.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="ori_voices/db4_EN300926.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="ori_voices/db4_MIX204100.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/p232_272.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/p268_302.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/SSB00110398.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/SSB04070040.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    </tbody>
+    </table>
+
+
+    <table>
+      <thead>
+      <tr> 
+        <td style="text-align:center", colspan="5"><b>Data-sufficient Scenario</b> </td> 
+        <td style="text-align:center", colspan="4"><b>Data-insufficient Scenario</b> </td>
+      </tr> 
+      <tr>
+        <th> CLMS - DB4 </th> 
+        <th> CLMS - LJS </th> 
+        <th> CLMS - DB1 </th>  
+        <th> BLMS - LJS </th> 
+        <th> BLMS - DB1 </th>
+        <th> VC - P232 </th>
+        <th> VC - P268 </th>
+        <th> VC - SSB0011 </th>
+        <th> VC - SSB0407 </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr></tr>  <tr></tr><tr></tr>  <tr></tr>
+    <tr>
+      <td colspan="5"><span><b>English sentences</b></td></span>
+    </tr>
+    <tr>
+      <td colspan="5"><span>Their solution requires development of the human capacity for social interest. </td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_000_p232_028.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_000_p268_100.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_000_SSB00110103.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_000_SSB04070433.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>His most significant scientific publications were studies of birds and animals. </td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_001_p232_269.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_001_p268_050.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_001_SSB00110297.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_001_SSB04070307.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>The process by which the lens focuses on external objects is called accommodation.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_002_p232_048.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_002_p268_028.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_002_SSB00110398.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_002_SSB04070028.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>The South Carolina educational radio network has won national broadcasting awards.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_003_p232_202.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_003_p268_189.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_003_SSB00110429.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_003_SSB04070086.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>Private free schools were formed both in poor neighborhoods and in middle class communities.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_004_p232_372.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_004_p268_261.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_004_SSB00110139.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_004_SSB04070255.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>They can also show how the shape and size of continents and oceans have changed over time.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_005_p232_255.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_005_p268_031.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_005_SSB00110074.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_005_SSB04070242.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>They established royal commissions to recover illegally held church lands.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_006_p232_140.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_006_p268_408.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_006_SSB00110080.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_006_SSB04070374.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>The enormous amounts of carbon dioxide in the atmosphere cause this high pressure.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_007_p232_108.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_007_p268_380.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_007_SSB00110146.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_007_SSB04070214.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>Origins or causes of spontaneous mutation are not yet completely clear.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_008_p232_298.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_008_p268_286.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_008_SSB00110186.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_008_SSB04070238.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>It is one of the earliest agricultural villages yet discovered in Southwest Asia.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_009_p232_392.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_009_p268_239.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_009_SSB00110148.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_009_SSB04070501.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>The hot fluid is circulated through a tube located in the lower tank of the radiator.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_010_p232_223.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_010_p268_283.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_010_SSB00110244.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_010_SSB04070291.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>Several environmental factors also have an effect on average life expectancy.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_011_p232_168.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_011_p268_230.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_011_SSB00110335.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_011_SSB04070084.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>Much of the ground beef consumed in the United States comes from dairy cows.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_012_p232_203.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_012_p268_319.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_012_SSB00110076.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_012_SSB04070301.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>Philosophers of education often differ in their views on the nature of knowledge.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_013_p232_090.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_013_p268_238.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_013_SSB00110136.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_013_SSB04070479.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>Unfortunately, others separate on the basis of accumulated hatred.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_en_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_en_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_en_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_en_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_en_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_014_p232_256.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_014_p268_323.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_014_SSB00110020.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_en_014_SSB04070438.wav" type="audio/wav"></audio></td>
+    </tr>
+
+
+    <tr>
+      <td colspan="5"><span><b>Code-switching sentences</b></td></span>
+    </tr>
+    <tr>
+      <td colspan="5"><span>用UC浏览器搜索 I believe I can fly </td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_000_p232_279.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_000_p268_369.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_000_SSB00110135.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_000_SSB04070482.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>那个slide出不到照片</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_001_p232_116.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_001_p268_127.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_001_SSB00110160.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_001_SSB04070341.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>I love you 中文是什么意思</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_002_p232_328.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_002_p268_242.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_002_SSB00110294.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_002_SSB04070430.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>就是说back street boys的歌就是有几首流行的 as long as you love me 然后 drowning</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_003_p232_238.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_003_p268_232.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_003_SSB00110232.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_003_SSB04070419.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>然后在家就没有说特地去开 radio 这样来听</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_004_p232_305.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_004_p268_016.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_004_SSB00110439.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_004_SSB04070261.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>我那个 company culture 其实就是 everyone help each other</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_005_p232_087.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_005_p268_263.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_005_SSB00110108.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_005_SSB04070175.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>I frankly speaking 就是比较少运动这样</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_006_p232_283.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_006_p268_195.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_006_SSB00110285.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_006_SSB04070066.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>因为就是那边也是很冷所以我每天都是要穿 jacket 这样的东西</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_007_p232_406.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_007_p268_052.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_007_SSB00110122.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_007_SSB04070263.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>我回来就是在 library 那边就是 apply for banking and finance those kind of jobs</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_008_p232_340.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_008_p268_081.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_008_SSB00110433.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_008_SSB04070273.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>everyday 放学可以驾着那个 car 就跑去那个</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_009_p232_302.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_009_p268_033.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_009_SSB00110477.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_009_SSB04070155.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>most of the time 就是去玩一下</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_010_p232_239.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_010_p268_056.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_010_SSB00110177.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_010_SSB04070126.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>其实我很难判断 in my heart i think my chinese is better but people tell me that my english 是比较好</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_011_p232_371.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_011_p268_094.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_011_SSB00110231.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_011_SSB04070413.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>可是我父母不喜欢我这样 so i try to go home when 我有时间</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_012_p232_034.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_012_p268_197.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_012_SSB00110480.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_012_SSB04070216.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>我不想再 take 那种 business module 因为我 take 了有很不好的经验.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_013_p232_203.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_013_p268_154.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_013_SSB00110072.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_013_SSB04070266.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>可是那个 sports science and management 很难进.</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/text_cs_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/text_cs_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/text_cs_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/text_cs_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/text_cs_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_014_p232_078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_014_p268_236.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_014_SSB00110238.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/text_cs_014_SSB04070432.wav" type="audio/wav"></audio></td>
+    </tr>
+
+
+
+    <tr>
+      <td colspan="5"><span><b>Mandarin sentences</b></td></span>
+    </tr>
+    <tr>
+      <td colspan="5"><span>建筑设计师莱伊恩受命设计了英国温泽市政府大厅</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_000_p232_105.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_000_p268_263.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_000_SSB00110287.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_000_SSB04070371.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>新加坡的一位知名人士认为上世纪最重要的发明是冷气机 </td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_001.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_001_p232_077.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_001_p268_179.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_001_SSB00110356.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_001_SSB04070132.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>地球上的人都会有国家的概念</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_002_p232_290.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_002_p268_389.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_002_SSB00110382.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_002_SSB04070147.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>布鲁诺很不满意老板的不公正待遇</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_003.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_003_p232_097.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_003_p268_151.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_003_SSB00110032.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_003_SSB04070432.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>森林慢慢将大气中的二氧化碳吸收，同时吐出新鲜氧气</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_004.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_004_p232_252.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_004_p268_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_004_SSB00110465.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_004_SSB04070342.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>有的呢是各种平台关联公司和劳务派遣公司</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_005.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_005_p232_067.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_005_p268_073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_005_SSB00110449.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_005_SSB04070477.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>这也是现在不少网约平台常用的管理办法</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_006_p232_055.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_006_p268_134.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_006_SSB00110116.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_006_SSB04070465.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="5"><span>很多时候部门与部门之间一个电话能解决的事情</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_007.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_007_p232_347.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_007_p268_330.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_007_SSB00110039.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_007_SSB04070074.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>六月二十七号中央气象台发布了今年首个高温预警</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_008.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_008_p232_232.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_008_p268_168.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_008_SSB00110306.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_008_SSB04070266.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>现在呢有很多朋友都喜欢打游戏</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_009.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_009_p232_313.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_009_p268_118.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_009_SSB00110224.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_009_SSB04070086.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>很多校长和老师的毕业致辞是或温情或哲理或幽默</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_010.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_010_p232_017.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_010_p268_226.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_010_SSB00110075.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_010_SSB04070185.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>很多流行的热词呢也是纷纷被高校校长们引用</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_011_p232_011.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_011_p268_350.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_011_SSB00110015.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_011_SSB04070148.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>家用电器设备和暖气设备一定要远离煤气管道</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_012_p232_283.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_012_p268_347.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_012_SSB00110327.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_012_SSB04070088.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>堪忧本来就是令人担忧的意思</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_013.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_013_p232_292.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_013_p268_018.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_013_SSB00110159.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_013_SSB04070213.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <tr>
+      <td colspan="5"><span>这个时候有两个身影就向着火场逆行</td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="clms/db4/wavs/test_cn_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/ljs/wavs/test_cn_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="clms/db1/wavs/test_cn_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/ljs/wavs/test_cn_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="blms/db1/wavs/test_cn_014.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_014_p232_012.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_014_p268_108.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_014_SSB00110410.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="vc/test_cn_014_SSB04070233.wav" type="audio/wav"></audio></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+</div>
+</body>
+</html>
