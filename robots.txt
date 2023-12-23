@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://caizexin.github.io/al-folio/sitemap.xml
+Sitemap: https://caizexin.github.io/caizexin/sitemap.xml
