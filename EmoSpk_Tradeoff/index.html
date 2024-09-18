@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Speaker Anonymization</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="bootstrap-5.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+  <link href="blog.css" rel="stylesheet"> -->
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .font-italic {
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .font-normal {
+      font-family: 'Playfair Display', serif;
+    }
+
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="carousel.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-image: url('bg.jpg');">
+      <div>
+        <h2 style="color:white;">&nbsp &nbsp Speaker Anonymization</h2>
+        <!-- <a class="navbar-brand" href="#">Invertible Voice Conversion</a> -->
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="bg.jpg" class="d-block w-100" alt="...">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1 class="font-italic"><b>Privacy</b> versus <b>Emotion</b> Preservation Trade-offs in <br> Emotion-Preserving <b> Speaker Anonymization </b> </h1>
+              <h6 class="font-italic"><a href="https://caizexin.github.io" style="color: white;">Zexin Cai</a>, <a href="https://hstehstehste.github.io" style="color: white;">Henry Li Xinyuan</a>, <a href="" style="color: white;">Ashi Garg</a>, <a href="https://www.clsp.jhu.edu/faculty/paola-garcia/" style="color: white;">Leibny Paola Garc'ia-Perera</a>, <a href="https://www.cs.jhu.edu/~kevinduh/index.html" style="color: white;">Kevin Duh</a>, <a href="https://www.clsp.jhu.edu/faculty-pages/sanjeev/" style="color: white;">Sanjeev Khudanpur</a>, <a href="https://www.cs.jhu.edu/~noa/" style="color: white;">Nicholas Andrews</a>, <a href="https://m-wiesner.github.io/about/" style="color: white;">Matthew Wiesner</a></h3>
+              <hr >
+              <p style="color: #FFD700;">Advances in speech technology now allow unprecedented access to personally identifiable information through speech. To protect such information, the differential privacy field has explored ways to anonymize speech while preserving its utility, including linguistic and paralinguistic aspects. However, anonymizing speech while maintaining emotional state remains challenging. We explore this problem in the context of the VoicePrivacy 2024 challenge. Specifically, we developed various speaker anonymization pipelines and find that approaches either excel at anonymization or preserving emotion state, but not both simultaneously. Achieving both would require an in-domain emotion recognizer. Additionally, we found that it is feasible to train a semi-effective speaker verification system using only emotion representations, demonstrating the challenge of separating these two modalities.</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  </div>
+  <div> <h4 class="font-italic"> <a href="https://arxiv.org/abs/2409.03655" style="color: black;">Paper</a> is accepted by 2024 IEEE Spoken Language Technology Workshop </h4></div>
+  <hr>
+  <div> <h3 class="font-italic"> Anonymization Samples </h3></div>
+  <div> <ul style="color:#808080";>
+    <li> <b>Origin</b> The original, unanonymized speech.</li>
+    <li> <b>ConVec2Mel-VC</b> The speaker embedding-conditioned VC system we developed. During anonymization, the target embedding is extracted from a randomly selected utterance from LibriTTS.</li>
+    <li> <b>kNN-VC</b> The kNN-based VC method. For each utterance, the WavLM feature pool is obtained from a randomly chosen target speaker in LibriTTS, with the target pool comprising at least 5 minutes of audio.</li>
+    <li> <b>ConVec2Mel-VC-XTTS</b> This system utilizes the cascaded ASR-TTS method. For each source utterance, the prompt speech is the corresponding anonymized speech from ConVec2Mel-VC.</li>
+    <li> <b>kNN-VC-XTTS</b> This system follows the cascaded ASR-TTS approach. For each source utterance, the prompt speech is the corresponding anonymized speech from the kNN-VC system.</li>
+    <li> <b>XTTS</b> The cascaded ASR-TTS anonymization method, where the prompt utterance during inference is randomly chosen from the LibriTTS dataset.</li>
+    <li> <b>EmoMSP-XTTS</b> The system that employs the emotion-proxy anonymization strategy. This system is based on the out-of-domain emotion recognizer.</li>
+    <li> <b>EmoIEMOCAP-XTTS</b> The system that employs the emotion-proxy anonymization strategy. This system is based on the in-domain emotion recognizer.</li>
+  </ul> </div>
+
+
+  <table class="table table-borderless align-middle" style="width: 100%; white-space:nowrap; vertical-align:center; text-align: center;">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col" rowspan="1" colspan="1" style="border: right;">Systems</th>
+        <th class="text-center" scope="col" colspan="3">IEMOCAP anonymization samples</th>
+      </tr>
+    </thead>
+
+    <tbody >
+      <tr>
+        <td> 
+          Origin
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/org/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/org/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/org/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+      <tr>
+        <td> 
+          ConVec2Mel-VC
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+      <tr>
+        <td> 
+          kNN-VC
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_knnvc/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_knnvc/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_knnvc/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          ConVec2Mel-VC-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk_TTS2/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk_TTS2/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk_TTS2/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          kNN-VC-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_TTS/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_TTS/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_TTS/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/randspk_TTS/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/randspk_TTS/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/randspk_TTS/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          EmoMSP-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoMSP_TTS/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoMSP_TTS/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoMSP_TTS/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          EmoIEMOCAP-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoIEMCP_TTS/Ses01F_impro02_F003.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoIEMCP_TTS/Ses03F_impro03_M015.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoIEMCP_TTS/Ses05M_script03_2_F034.wav">
+          </audio> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<hr>
+  <table class="table table-borderless align-middle" style="width: 100%; white-space:nowrap; vertical-align:center; text-align: center;">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col" colspan="1" style="border: right;">Systems</th>
+        <th class="text-center" scope="col" colspan="4">Librispeech anonymization samples</th>
+      </tr>
+    </thead>
+
+    <tbody >
+      <tr>
+        <td> 
+          Origin
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/org/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/org/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/org/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/org/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          ConVec2Mel-VC
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+      
+      <tr>
+        <td> 
+          kNN-VC
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_knnvc/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_knnvc/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_knnvc/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_knnvc/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          ConVec2Mel-VC-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk_TTS2/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk_TTS2/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk_TTS2/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/ConV2Mel_randspk_TTS2/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          kNN-VC-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_TTS/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_TTS/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_TTS/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/knnvc_random_TTS/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/randspk_TTS/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/randspk_TTS/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/randspk_TTS/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/randspk_TTS/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          EmoMSP-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoMSP_TTS/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoMSP_TTS/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoMSP_TTS/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoMSP_TTS/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+
+      <tr>
+        <td> 
+          EmoIEMOCAP-XTTS
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoIEMCP_TTS/1089-134686-0008.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoIEMCP_TTS/1284-1180-0029.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoIEMCP_TTS/1462-170138-0022.wav">
+          </audio> 
+        </td>
+        <td> 
+          <audio controls="" preload="none" style="margin: 0 auto; display: block;">
+            <source src="samples/emoIEMCP_TTS/2428-83699-0032.wav">
+          </audio> 
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <h5 class="font-normal"> References </h5>
+  <div> <ul style="color:#808080";></ul>
+    <li> <a href="https://github.com/Voice-Privacy-Challenge/Voice-Privacy-Challenge-2024">VoicePrivacy Challenge 2024</a> </li>
+    <li> <a href="https://github.com/coqui-ai/TTS">XTTS</a></li>
+    <li> <a href="https://github.com/bshall/knn-vc">Voice Conversion With Just Nearest Neighbors</a></li>
+  </ul> </div>
+  <hr>
+      <footer class="container">
+        <p>&copy; <a href="https://hltcoe.jhu.edu">Human Language Technology Center of Excellence, Johns Hopkins University</a> </p>
+        <p class="float-end"><a href="#">Back to top</a></p>
+        
+      </footer>
+      <!-- FOOTER -->
+    </main>
+
+
+    <script src="bootstrap-5.1.1-dist/js/bootstrap.bundle.min.js"></script>
+
+
+  </body>
+  </html>
